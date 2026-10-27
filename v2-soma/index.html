@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOMA — Conecta, automatiza y haz crecer tu negocio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --naranja: #F48507;
+    --celeste: #4BBEEC;
+    --morado: #C22EE0;
+    --texto: #241E33;
+    --texto-suave: #6B6580;
+    --fondo: #F8F4EC;
+    --fondo-suave: #F3EDE1;
+    --borde: #F0E9DC;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: var(--texto); background: var(--fondo); }
+  h1, h2, h3 { font-family: 'Sora', sans-serif; }
+  .contenedor { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+  .grad { background: linear-gradient(90deg, var(--naranja), var(--celeste), var(--morado)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  /* ===== NAVBAR ===== */
+  nav { position: sticky; top: 0; background: rgba(248,244,236,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--borde); z-index: 100; }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .logo { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 24px; letter-spacing: 4px; color: var(--texto); text-decoration: none; }
+  .logo span { color: var(--naranja); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--texto); font-size: 15px; font-weight: 500; }
+  .nav-links a:hover { color: var(--naranja); }
+  .nav-acciones { display: flex; align-items: center; gap: 20px; }
+  .login { text-decoration: none; color: var(--texto); font-weight: 500; font-size: 15px; }
+  .btn { display: inline-block; padding: 12px 26px; border-radius: 100px; font-weight: 600; font-size: 15px; text-decoration: none; transition: transform .15s, box-shadow .15s; border: none; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primario { background: linear-gradient(90deg, var(--naranja), var(--morado)); color: #fff; box-shadow: 0 6px 20px rgba(244,133,7,.30); }
+  .btn-secundario { background: transparent; color: var(--texto); border: 1.5px solid #DDD3C4; }
+
+  /* ===== HERO ===== */
+  .hero { padding: 90px 0 80px; text-align: center; background:
+    radial-gradient(ellipse 50% 55% at 15% 0%, rgba(244,133,7,.10), transparent),
+    radial-gradient(ellipse 50% 55% at 85% 5%, rgba(194,46,224,.08), transparent),
+    radial-gradient(ellipse 40% 40% at 50% 40%, rgba(75,190,236,.07), transparent); }
+  .etiqueta { display: inline-block; border: 1px solid var(--borde); background: #fff; padding: 7px 16px; border-radius: 100px; font-size: 13px; font-weight: 600; margin-bottom: 26px; box-shadow: 0 2px 10px rgba(36,30,51,.05); }
+  .etiqueta b { color: var(--naranja); }
+  .hero h1 { font-size: 56px; line-height: 1.08; letter-spacing: -2px; max-width: 800px; margin: 0 auto; }
+  .hero p.sub { margin: 24px auto 38px; font-size: 19px; color: var(--texto-suave); line-height: 1.6; max-width: 560px; }
+  .hero-ctas { display: flex; gap: 16px; justify-content: center; }
+  .nota-hero { margin-top: 18px; font-size: 13px; color: #A39A8C; }
+
+  /* Mock de dashboard */
+  .mock { max-width: 860px; margin: 56px auto 0; background: #fff; border: 1px solid var(--borde); border-radius: 20px; box-shadow: 0 30px 70px rgba(36,30,51,.12); overflow: hidden; text-align: left; }
+  .mock-bar { display: flex; gap: 7px; padding: 14px 16px; border-bottom: 1px solid #F5F0E8; }
+  .mock-bar i { width: 11px; height: 11px; border-radius: 50%; display: block; }
+  .mock-body { display: grid; grid-template-columns: 56px 1fr; }
+  .mock-side { background: var(--fondo-suave); border-right: 1px solid #F5F0E8; padding: 18px 0; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .mock-side i { width: 26px; height: 26px; border-radius: 8px; background: #EFE7DA; display: block; }
+  .mock-side i:first-child { background: linear-gradient(135deg, var(--naranja), var(--morado)); }
+  .mock-main { padding: 20px; }
+  .mock-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+  .mock-kpi { background: var(--fondo-suave); border: 1px solid #F5F0E8; border-radius: 12px; padding: 14px; }
+  .mock-kpi b { display: block; font-family: 'Sora', sans-serif; font-size: 20px; }
+  .mock-kpi span { font-size: 11px; color: #A39A8C; }
+  .mock-chart { display: flex; align-items: flex-end; gap: 10px; height: 110px; padding: 16px; background: var(--fondo-suave); border: 1px solid #F5F0E8; border-radius: 12px; }
+  .mock-chart i { flex: 1; border-radius: 6px 6px 2px 2px; background: linear-gradient(180deg, var(--celeste), #2E9FD6); }
+  .mock-chart i:nth-child(2) { background: linear-gradient(180deg, var(--naranja), #D06A05); }
+  .mock-chart i:nth-child(4) { background: linear-gradient(180deg, var(--morado), #9B1BB2); }
+
+  /* ===== SOCIAL PROOF ===== */
+  .prueba { padding: 40px 0; border-top: 1px solid var(--borde); border-bottom: 1px solid var(--borde); }
+  .prueba p { text-align: center; font-size: 14px; color: #A39A8C; margin-bottom: 22px; }
+  .logos { display: flex; justify-content: center; gap: 56px; flex-wrap: wrap; }
+  .logos span { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 20px; color: #D8CFC0; letter-spacing: 1px; }
+
+  /* ===== PILARES ===== */
+  .pilares { padding: 100px 0; }
+  .pilares-header { text-align: center; max-width: 640px; margin: 0 auto 60px; }
+  .pilares-header h2 { font-size: 42px; letter-spacing: -1.2px; }
+  .pilares-header p { margin-top: 16px; color: var(--texto-suave); font-size: 17px; line-height: 1.6; }
+  .pilares-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .pilar { background: #fff; border-radius: 24px; padding: 38px 30px; border: 1px solid var(--borde); transition: transform .2s, box-shadow .2s; position: relative; overflow: hidden; }
+  .pilar::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px; }
+  .pilar:hover { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(36,30,51,.10); }
+  .p1::before { background: linear-gradient(90deg, var(--naranja), #FFB25C); }
+  .p2::before { background: linear-gradient(90deg, var(--celeste), #7DD4F7); }
+  .p3::before { background: linear-gradient(90deg, var(--morado), #E07DF2); }
+  .pilar-icono { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 22px; font-size: 26px; }
+  .p1 .pilar-icono { background: rgba(244,133,7,.12); }
+  .p2 .pilar-icono { background: rgba(75,190,236,.14); }
+  .p3 .pilar-icono { background: rgba(194,46,224,.10); }
+  .pilar h3 { font-size: 25px; margin-bottom: 12px; }
+  .pilar > p { color: var(--texto-suave); font-size: 15px; line-height: 1.55; margin-bottom: 20px; }
+  .pilar ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+  .pilar li { font-size: 14px; color: #4A4460; background: var(--fondo-suave); border: 1px solid #F5F0E8; border-radius: 10px; padding: 9px 14px; }
+  .pilar li b { display: block; font-size: 14px; }
+  .pilar li span { font-size: 12.5px; color: #A39A8C; }
+
+  /* ===== MÉTRICAS ===== */
+  .metricas { padding: 80px 0; background:
+    radial-gradient(ellipse 45% 90% at 15% 50%, rgba(244,133,7,.06), transparent),
+    radial-gradient(ellipse 45% 90% at 85% 50%, rgba(194,46,224,.06), transparent); }
+  .metricas-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .metrica { text-align: center; padding: 34px 16px; border-radius: 20px; background: #fff; border: 1px solid var(--borde); box-shadow: 0 2px 14px rgba(36,30,51,.04); }
+  .metrica b { display: block; font-family: 'Sora', sans-serif; font-size: 44px; letter-spacing: -1px; }
+  .m1 b { color: var(--naranja); } .m2 b { color: var(--celeste); } .m3 b { color: var(--morado); } .m4 b { color: var(--texto); }
+  .metrica span { font-size: 14px; color: #A39A8C; }
+
+  /* ===== CTA FINAL ===== */
+  .cta-final { text-align: center; padding: 100px 24px; background:
+    radial-gradient(ellipse 60% 80% at 50% 130%, rgba(194,46,224,.10), transparent),
+    radial-gradient(ellipse 40% 50% at 20% 120%, rgba(244,133,7,.08), transparent); }
+  .cta-final h2 { font-size: 44px; letter-spacing: -1.2px; max-width: 680px; margin: 0 auto 18px; }
+  .cta-final p { color: var(--texto-suave); margin-bottom: 36px; font-size: 17px; }
+  .cta-final small { display: block; margin-top: 16px; color: #A39A8C; font-size: 13px; }
+
+  /* ===== FOOTER ===== */
+  footer { border-top: 1px solid var(--borde); padding: 40px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; }
+  .footer-inner p { font-size: 13px; color: #A39A8C; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { color: #8B8292; text-decoration: none; font-size: 13px; }
+  .footer-links a:hover { color: var(--naranja); }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hero h1 { font-size: 38px; }
+    .pilares-grid { grid-template-columns: 1fr; }
+    .metricas-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="contenedor nav-inner">
+    <a class="logo" href="#">SOMA<span>_</span></a>
+    <ul class="nav-links">
+      <li><a href="#pilares">Producto</a></li>
+      <li><a href="#pilares">Soluciones</a></li>
+      <li><a href="#prueba">Clientes</a></li>
+      <li><a href="#">Recursos</a></li>
+    </ul>
+    <div class="nav-acciones">
+      <a class="login" href="#">Iniciar sesión</a>
+      <a class="btn btn-primario" href="#cta">Probar gratis</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="contenedor">
+    <span class="etiqueta">🏆 Nombrado <b>Mejor CRM emergente 2026</b></span>
+    <h1>Un solo lugar para <span class="grad">gestionar, automatizar y analizar</span> todo tu negocio</h1>
+    <p class="sub">SOMA reúne a tus clientes, tus procesos y tus números en una plataforma viva. Menos pestañas abiertas, más resultados.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primario" href="#cta">Empieza gratis hoy</a>
+      <a class="btn btn-secundario" href="#pilares">Ver cómo funciona</a>
+    </div>
+    <p class="nota-hero">✓ Sin tarjeta de crédito &nbsp;·&nbsp; ✓ Listo en 5 minutos</p>
+    <div class="mock">
+      <div class="mock-bar">
+        <i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i>
+      </div>
+      <div class="mock-body">
+        <div class="mock-side"><i></i><i></i><i></i><i></i></div>
+        <div class="mock-main">
+          <div class="mock-kpis">
+            <div class="mock-kpi"><b>$128K</b><span>Ingresos del mes</span></div>
+            <div class="mock-kpi"><b>342</b><span>Tratos activos</span></div>
+            <div class="mock-kpi"><b>62%</b><span>Tasa de cierre</span></div>
+          </div>
+          <div class="mock-chart">
+            <i style="height:40%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:80%"></i><i style="height:58%"></i><i style="height:95%"></i><i style="height:72%"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="prueba" id="prueba">
+  <div class="contenedor">
+    <p>Equipos de ventas, agencias y startups que ya trabajan con SOMA</p>
+    <div class="logos">
+      <span>NOVA</span><span>Kapta</span><span>Lúmina</span><span>ORBITAL</span><span>Trébol&amp;Co</span><span>delta</span>
+    </div>
+  </div>
+</section>
+
+<section class="pilares" id="pilares">
+  <div class="contenedor">
+    <div class="pilares-header">
+      <h2>Tres pilares, <span class="grad">cero fricción</span></h2>
+      <p>El operador completo de tu negocio: organiza el presente, acelera el día a día y entiende el futuro.</p>
+    </div>
+    <div class="pilares-grid">
+      <div class="pilar p1">
+        <div class="pilar-icono">🗂️</div>
+        <h3>Gestiona</h3>
+        <p>Toda tu operación ordenada y accesible para todo el equipo.</p>
+        <ul>
+          <li><b>Clientes</b><span>Fichas 360° con historial completo</span></li>
+          <li><b>Negocios</b><span>Pipeline kanban por etapas</span></li>
+          <li><b>Tareas</b><span>Asignación y vencimientos claros</span></li>
+        </ul>
+      </div>
+      <div class="pilar p2">
+        <div class="pilar-icono">⚡</div>
+        <h3>Automatiza</h3>
+        <p>Que la plataforma trabaje mientras tu equipo vende.</p>
+        <ul>
+          <li><b>Workflows</b><span>Constructor visual sin código</span></li>
+          <li><b>Comunicaciones</b><span>Email, WhatsApp y SMS integrados</span></li>
+          <li><b>Procesos</b><span>Disparadores inteligentes por evento</span></li>
+        </ul>
+      </div>
+      <div class="pilar p3">
+        <div class="pilar-icono">📈</div>
+        <h3>Analiza</h3>
+        <p>Cada número de tu negocio, siempre a la vista.</p>
+        <ul>
+          <li><b>Métricas</b><span>Tableros en tiempo real</span></li>
+          <li><b>Ventas</b><span>Pronósticos con IA</span></li>
+          <li><b>KPIs</b><span>Reportes automáticos a tu correo</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="metricas">
+  <div class="contenedor metricas-grid">
+    <div class="metrica m1"><b>+38%</b><span>conversión promedio</span></div>
+    <div class="metrica m2"><b>12 h</b><span>ahorradas por semana</span></div>
+    <div class="metrica m3"><b>2.4x</b><span>más seguimientos por cliente</span></div>
+    <div class="metrica m4"><b>5 min</b><span>para dejarla lista</span></div>
+  </div>
+</section>
+
+<section class="cta-final" id="cta">
+  <h2>Deja que SOMA haga el trabajo pesado</h2>
+  <p>Únete a los cientos de equipos que ya centralizaron su operación en una sola plataforma.</p>
+  <a class="btn btn-primario" href="#">Crear mi cuenta gratis</a>
+  <small>Prueba de 14 días · Sin tarjeta · Cancela cuando quieras</small>
+</section>
+
+<footer>
+  <div class="contenedor footer-inner">
+    <a class="logo" href="#" style="font-size:18px">SOMA<span>_</span></a>
+    <div class="footer-links">
+      <a href="#">Producto</a><a href="#">Precios</a><a href="#">Privacidad</a><a href="#">Términos</a><a href="#">Contacto</a>
+    </div>
+    <p>© 2026 SOMA. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+</body>
+</html>

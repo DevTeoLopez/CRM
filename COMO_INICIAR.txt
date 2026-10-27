@@ -1,0 +1,144 @@
+================================================================
+  GUIA PARA INICIAR LAS LANDING PAGES
+  Proyecto: C:\Users\Usuario\Desktop\Landing
+================================================================
+
+CONTENIDO
+---------
+Este proyecto tiene 3 landing pages en HTML puro (sin dependencias,
+sin build). Cada una esta en su propia carpeta:
+
+  - v1-aleph\index.html    -> Landing ALEPH (CRM)
+  - v2-soma\index.html     -> Landing SOMA
+  - v3-athenea\index.html  -> Landing ATHENEA
+
+REQUISITOS
+----------
+Tener Python instalado (en este equipo hay Python 3.14.0).
+Para comprobarlo, abre PowerShell y ejecuta:
+
+    python --version
+
+
+
+================================================================
+  PARTE 1 - LAS 3 LANDINGS EN EL MISMO PUERTO
+================================================================
+
+Con esta opcion un solo servidor sirve toda la carpeta Landing,
+y cada landing se accede por el nombre de su carpeta en la URL.
+
+PASO 1: Abrir PowerShell.
+
+PASO 2: Situarse en la carpeta del proyecto:
+
+    cd C:\Users\Usuario\Desktop\Landing
+
+PASO 3: Iniciar el servidor (puerto 8080 en este ejemplo):
+
+    python -m http.server 8080
+
+PASO 4: Abrir el navegador y entrar en:
+
+    http://localhost:8080/v1-aleph/     -> ALEPH
+    http://localhost:8080/v2-soma/      -> SOMA
+    http://localhost:8080/v3-athenea/   -> ATHENEA
+    
+
+NOTA: Si prefieres otro puerto (por ejemplo 3000), cambia el
+numero al final del comando y usalo tambien en las URLs.
+
+PARAR EL SERVIDOR: Pulsa Ctrl + C en la ventana de PowerShell.
+
+
+================================================================
+  PARTE 2 - CADA LANDING EN UN PUERTO DIFERENTE
+================================================================
+
+Opcion A - Una ventana de PowerShell por landing
+------------------------------------------------
+
+VENTANA 1 - ALEPH (puerto 8001):
+
+    cd C:\Users\Usuario\Desktop\Landing\v1-aleph
+    python -m http.server 8001
+
+VENTANA 2 - SOMA (puerto 8002):
+
+    cd C:\Users\Usuario\Desktop\Landing\v2-soma
+    python -m http.server 8002
+
+VENTANA 3 - ATHENEA (puerto 8003):
+
+    cd C:\Users\Usuario\Desktop\Landing\v3-athenea
+    python -m http.server 8003
+
+Luego abre en el navegador:
+
+    http://localhost:8001   -> ALEPH
+    http://localhost:8002   -> SOMA
+    http://localhost:8003   -> ATHENEA
+
+PARARLAS: Pulsa Ctrl + C en cada ventana.
+
+
+Opcion B - Una sola ventana que lanza las 3 en segundo plano
+------------------------------------------------------------
+
+PASO 1: Abrir PowerShell y situarse en la carpeta del proyecto:
+
+    cd C:\Users\Usuario\Desktop\Landing
+
+PASO 2: Ejecutar estas 3 lineas (cada una abre un proceso
+independiente de Python):
+
+    Start-Process python -ArgumentList "-m","http.server","8001" -WorkingDirectory "C:\Users\Usuario\Desktop\Landing\v1-aleph"
+    Start-Process python -ArgumentList "-m","http.server","8002" -WorkingDirectory "C:\Users\Usuario\Desktop\Landing\v2-soma"
+    Start-Process python -ArgumentList "-m","http.server","8003" -WorkingDirectory "C:\Users\Usuario\Desktop\Landing\v3-athenea"
+
+PASO 3: Abrir en el navegador:
+
+    http://localhost:8001   -> ALEPH
+    http://localhost:8002   -> SOMA
+    http://localhost:8003   -> ATHENEA
+
+PARARLAS: Cierra las ventanas de Python que se abrieron, o
+ejecuta:
+
+    taskkill /F /IM python.exe
+
+CUIDADO: taskkill /F /IM python.exe cierra TODOS los procesos de
+Python del equipo, no solo los servidores.
+
+
+================================================================
+  PROBLEMAS FRECUENTES
+================================================================
+
+1) "python no se reconoce como un comando..."
+   -> Python no esta en el PATH. Reinstalalo marcando
+   "Add Python to PATH", o usa "py" en lugar de "python".
+
+2) "OSError: [WinError 10048] solo se permite un uso de cada
+   direccion de socket" (o "Address already in use")
+   -> Ese puerto ya esta ocupado. Usa otro numero, por ejemplo:
+      python -m http.server 9001
+
+3) La pagina se ve en blanco o sin estilos
+   -> Comprueba que la URL apunta al index.html correcto y que
+   escribiste la barra final (ej. .../v1-aleph/).
+
+4) Comprobar que un servidor esta activo
+   -> En otra ventana de PowerShell:
+      Test-NetConnection -ComputerName localhost -Port 8001
+   Si "TcpTestSucceeded" es True, el puerto esta sirviendo.
+
+
+================================================================
+  ALTERNATIVA RAPIDA (SIN SERVIDOR)
+================================================================
+
+Como son HTML estatico, tambien puedes simplemente hacer doble
+clic en cualquier index.html y se abrira en el navegador. El
+servidor solo es util si quieres URLs tipo localhost o probarlas
+como en produccion.

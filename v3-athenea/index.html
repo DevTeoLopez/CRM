@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATHENEA — Inteligencia estratégica para tu negocio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cacao: #544646;
+    --fucsia: #D80061;
+    --morado: #8F1084;
+    --oscuro: #221B1B;
+    --texto: #2E2626;
+    --texto-suave: #7A6C6C;
+    --fondo: #F7F3F2;
+    --fondo-suave: #F0E9E9;
+    --borde: #EFE6E6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Manrope', sans-serif; color: var(--texto); background: var(--fondo); }
+  h1, h2, h3 { font-weight: 700; letter-spacing: -0.5px; }
+  .contenedor { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+  /* ===== NAVBAR ===== */
+  nav { position: sticky; top: 0; background: rgba(247,243,242,.93); backdrop-filter: blur(10px); border-bottom: 1px solid var(--borde); z-index: 100; }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+  .logo { font-weight: 800; font-size: 21px; letter-spacing: 5px; color: var(--oscuro); text-decoration: none; }
+  .logo span { color: var(--fucsia); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--texto); font-size: 15px; font-weight: 500; }
+  .nav-links a:hover { color: var(--fucsia); }
+  .nav-acciones { display: flex; align-items: center; gap: 20px; }
+  .login { text-decoration: none; color: var(--texto); font-weight: 500; font-size: 15px; }
+  .btn { display: inline-block; padding: 13px 28px; border-radius: 12px; font-weight: 700; font-size: 15px; text-decoration: none; transition: transform .15s, box-shadow .15s; border: none; font-family: 'Manrope', sans-serif; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primario { background: linear-gradient(135deg, var(--fucsia), var(--morado)); color: #fff; box-shadow: 0 8px 22px rgba(216,0,97,.30); }
+  .btn-secundario { background: transparent; color: var(--texto); border: 1.5px solid #DCD0D0; }
+
+  /* ===== HERO ===== */
+  .hero { padding: 95px 0 85px; text-align: center; background:
+    radial-gradient(ellipse 45% 50% at 15% 0%, rgba(143,16,132,.08), transparent),
+    radial-gradient(ellipse 45% 50% at 85% 5%, rgba(216,0,97,.07), transparent); }
+  .etiqueta { display: inline-block; border: 1px solid rgba(216,0,97,.35); background: rgba(216,0,97,.06); padding: 7px 18px; border-radius: 100px; font-size: 13px; font-weight: 600; margin-bottom: 28px; color: #A81448; }
+  .hero h1 { font-size: 58px; line-height: 1.06; letter-spacing: -2px; max-width: 820px; margin: 0 auto; color: var(--oscuro); }
+  .hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--fucsia), var(--morado)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p.sub { margin: 26px auto 40px; font-size: 19px; color: var(--texto-suave); line-height: 1.6; max-width: 580px; }
+  .hero-ctas { display: flex; gap: 16px; justify-content: center; }
+  .nota-hero { margin-top: 20px; font-size: 13px; color: #A29393; }
+
+  /* ===== SOCIAL PROOF ===== */
+  .prueba { padding: 42px 0; border-top: 1px solid var(--borde); border-bottom: 1px solid var(--borde); }
+  .prueba p { text-align: center; font-size: 14px; color: #A29393; margin-bottom: 22px; }
+  .logos { display: flex; justify-content: center; gap: 56px; flex-wrap: wrap; }
+  .logos span { font-weight: 800; font-size: 19px; color: #D9CCCC; letter-spacing: 2px; }
+
+  /* ===== PILARES ===== */
+  .pilares { padding: 100px 0; }
+  .pilares-header { text-align: center; max-width: 660px; margin: 0 auto 60px; }
+  .pilares-header h2 { font-size: 42px; color: var(--oscuro); }
+  .pilares-header p { margin-top: 16px; color: var(--texto-suave); font-size: 17px; line-height: 1.6; }
+  .pilares-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .pilar { background: #fff; border-radius: 22px; padding: 40px 30px; border: 1px solid var(--borde); box-shadow: 0 2px 20px rgba(46,38,38,.05); transition: transform .2s, box-shadow .2s; border-top: 4px solid transparent; }
+  .pilar:hover { transform: translateY(-6px); box-shadow: 0 26px 54px rgba(46,38,38,.12); }
+  .p1 { border-top-color: var(--cacao); }
+  .p2 { border-top-color: var(--fucsia); }
+  .p3 { border-top-color: var(--morado); }
+  .num { font-size: 13px; font-weight: 800; letter-spacing: 3px; margin-bottom: 16px; display: block; }
+  .p1 .num { color: var(--cacao); } .p2 .num { color: var(--fucsia); } .p3 .num { color: var(--morado); }
+  .pilar h3 { font-size: 26px; margin-bottom: 12px; }
+  .pilar > p { color: var(--texto-suave); font-size: 15px; line-height: 1.6; margin-bottom: 22px; }
+  .pilar ul { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .pilar li { font-size: 14px; color: #4E4242; padding: 12px 0; border-bottom: 1px solid #F5EEEE; display: flex; justify-content: space-between; align-items: center; }
+  .pilar li:last-child { border-bottom: none; }
+  .pilar li span { font-size: 12px; color: #A29393; }
+
+  /* ===== MÉTRICAS ===== */
+  .metricas { padding: 80px 0; background: var(--fondo-suave); border-top: 1px solid var(--borde); border-bottom: 1px solid var(--borde); }
+  .metricas-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: center; }
+  .metrica b { display: block; font-size: 48px; letter-spacing: -1px; }
+  .m1 b { color: var(--fucsia); } .m3 b { color: var(--morado); }
+  .metrica span { font-size: 14px; color: #A29393; }
+
+  /* ===== CTA FINAL ===== */
+  .cta-final { text-align: center; padding: 110px 24px; background:
+    radial-gradient(ellipse 55% 90% at 50% 120%, rgba(216,0,97,.08), transparent); }
+  .cta-final h2 { font-size: 44px; color: var(--oscuro); max-width: 660px; margin: 0 auto 18px; }
+  .cta-final p { color: var(--texto-suave); margin-bottom: 38px; font-size: 17px; }
+  .cta-final small { display: block; margin-top: 18px; color: #A29393; font-size: 13px; }
+
+  /* ===== FOOTER ===== */
+  footer { border-top: 1px solid var(--borde); padding: 44px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; }
+  .footer-inner p { font-size: 13px; color: #A29393; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { color: #8A7C7C; text-decoration: none; font-size: 13px; }
+  .footer-links a:hover { color: var(--fucsia); }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hero h1 { font-size: 38px; }
+    .pilares-grid { grid-template-columns: 1fr; }
+    .metricas-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="contenedor nav-inner">
+    <a class="logo" href="#">ATHENEA<span>·</span></a>
+    <ul class="nav-links">
+      <li><a href="#pilares">Plataforma</a></li>
+      <li><a href="#pilares">Soluciones</a></li>
+      <li><a href="#prueba">Clientes</a></li>
+      <li><a href="#">Recursos</a></li>
+    </ul>
+    <div class="nav-acciones">
+      <a class="login" href="#">Iniciar sesión</a>
+      <a class="btn btn-primario" href="#cta">Agendar demo</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="contenedor">
+    <span class="etiqueta">La estrategia detrás de tu operación</span>
+    <h1>Decisiones más inteligentes. <em>Resultados medibles.</em></h1>
+    <p class="sub">ATHENEA convierte la gestión comercial de tu empresa en una máquina de precisión: organiza, automatiza y revela lo que realmente impulsa tus ventas.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primario" href="#cta">Agendar una demo</a>
+      <a class="btn btn-secundario" href="#pilares">Explorar la plataforma</a>
+    </div>
+    <p class="nota-hero">✓ Implementación guiada &nbsp;·&nbsp; ✓ Datos migrados sin costo</p>
+  </div>
+</header>
+
+<section class="prueba" id="prueba">
+  <div class="contenedor">
+    <p>Empresas que dirigen su crecimiento con ATHENEA</p>
+    <div class="logos">
+      <span>NOVA</span><span>KAPTA</span><span>LÚMINA</span><span>ORBITAL</span><span>TRÉBOL&amp;CO</span><span>DELTA</span>
+    </div>
+  </div>
+</section>
+
+<section class="pilares" id="pilares">
+  <div class="contenedor">
+    <div class="pilares-header">
+      <h2>Domina las tres dimensiones de tu negocio</h2>
+      <p>Gestión, automatización e inteligencia operando como un solo sistema.</p>
+    </div>
+    <div class="pilares-grid">
+      <div class="pilar p1">
+        <span class="num">— 01</span>
+        <h3>Gestiona</h3>
+        <p>Control total sobre cada relación y cada compromiso de tu equipo.</p>
+        <ul>
+          <li><b>Clientes</b><span>Visión 360° de cada cuenta</span></li>
+          <li><b>Negocios</b><span>Pipeline con etapas configurables</span></li>
+          <li><b>Tareas</b><span>Responsables y fechas claras</span></li>
+        </ul>
+      </div>
+      <div class="pilar p2">
+        <span class="num">— 02</span>
+        <h3>Automatiza</h3>
+        <p>Procesos que operan solos, con la precisión que tu operación exige.</p>
+        <ul>
+          <li><b>Workflows</b><span>Automatizaciones visuales</span></li>
+          <li><b>Comunicaciones</b><span>Campañas multicanal</span></li>
+          <li><b>Procesos</b><span>Reglas por etapa y evento</span></li>
+        </ul>
+      </div>
+      <div class="pilar p3">
+        <span class="num">— 03</span>
+        <h3>Analiza</h3>
+        <p>La inteligencia que tu estrategia necesita, en tiempo real.</p>
+        <ul>
+          <li><b>Métricas</b><span>Tableros ejecutivos en vivo</span></li>
+          <li><b>Ventas</b><span>Proyección del pipeline</span></li>
+          <li><b>KPIs</b><span>Indicadores por equipo y período</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="metricas">
+  <div class="contenedor metricas-grid">
+    <div class="metrica m1"><b>+38%</b><span>en conversión comercial</span></div>
+    <div class="metrica m2"><b>12 h</b><span>de trabajo manual ahorradas / semana</span></div>
+    <div class="metrica m3"><b>+120</b><span>empresas asesoradas</span></div>
+    <div class="metrica m4"><b>24/7</b><span>soporte especializado</span></div>
+  </div>
+</section>
+
+<section class="cta-final" id="cta">
+  <h2>Lleva tu operación al siguiente nivel de madurez</h2>
+  <p>Una demo personalizada de 20 minutos con un especialista en tu industria.</p>
+  <a class="btn btn-primario" href="#">Agendar mi demo</a>
+  <small>Diagnóstico inicial sin costo incluido</small>
+</section>
+
+<footer>
+  <div class="contenedor footer-inner">
+    <a class="logo" href="#" style="font-size:17px">ATHENEA<span>·</span></a>
+    <div class="footer-links">
+      <a href="#">Plataforma</a><a href="#">Precios</a><a href="#">Privacidad</a><a href="#">Términos</a><a href="#">Contacto</a>
+    </div>
+    <p>© 2026 ATHENEA. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+</body>
+</html>

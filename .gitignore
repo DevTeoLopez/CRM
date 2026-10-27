@@ -1,0 +1,4 @@
+# Archivos de trabajo local, no forman parte de las landings
+.playwright-mcp/
+.claude/
+*.log
