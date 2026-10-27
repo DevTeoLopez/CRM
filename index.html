@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landings CRM — Índice de versiones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rosa: #D4146A;
+    --celeste: #4BBEEC;
+    --gris: #9F9F9F;
+    --texto: #1C1B2E;
+    --texto-suave: #6E6C7A;
+    --fondo: #FFFFFF;
+    --fondo-suave: #F5F8FB;
+    --borde: #ECEFF4;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: var(--texto); background: var(--fondo); min-height: 100vh; }
+  h1, h2, h3 { font-family: 'Sora', sans-serif; }
+  .contenedor { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+  .portada { padding: 80px 0 60px; text-align: center; position: relative; overflow: hidden; }
+  .portada::before { content: ''; position: absolute; inset: 0; pointer-events: none; background:
+    radial-gradient(ellipse 45% 60% at 12% 0%, rgba(212,20,106,.07), transparent),
+    radial-gradient(ellipse 45% 60% at 88% 10%, rgba(75,190,236,.09), transparent); }
+  .portada .contenedor { position: relative; }
+  .kicker { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--gris); border: 1px solid var(--borde); border-radius: 100px; padding: 7px 16px; margin-bottom: 24px; background: #fff; }
+  .portada h1 { font-size: clamp(34px, 5.5vw, 54px); letter-spacing: -1.5px; line-height: 1.1; }
+  .portada h1 .grad {
+    background: linear-gradient(90deg, var(--rosa), var(--celeste), var(--rosa));
+    background-size: 200% 100%;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    animation: gradFluye 6s ease-in-out infinite alternate;
+  }
+  @keyframes gradFluye { to { background-position: 100% 0; } }
+  .portada p { margin: 18px auto 0; max-width: 520px; color: var(--texto-suave); font-size: 17px; line-height: 1.6; }
+
+  .rejilla { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 30px 0 80px; }
+  .tarjeta {
+    display: flex; flex-direction: column; gap: 6px; text-decoration: none; color: var(--texto);
+    background: #fff; border: 1px solid var(--borde); border-radius: 20px; padding: 26px 24px;
+    position: relative; overflow: hidden;
+    transition: transform .3s cubic-bezier(0.33, 1, 0.68, 1), box-shadow .3s ease, border-color .3s ease;
+  }
+  .tarjeta:hover { transform: translateY(-6px); box-shadow: 0 20px 44px rgba(28,27,46,.10); border-color: var(--tarjeta, var(--rosa)); }
+  .tarjeta::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: var(--tarjeta, var(--rosa)); transform: scaleX(0); transform-origin: left;
+    transition: transform .45s cubic-bezier(0.33, 1, 0.68, 1); }
+  .tarjeta:hover::before { transform: scaleX(1); }
+  .tarjeta .etiqueta { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tarjeta, var(--rosa)); }
+  .tarjeta h2 { font-size: 22px; letter-spacing: -0.5px; }
+  .tarjeta p { font-size: 14px; color: var(--texto-suave); line-height: 1.55; flex: 1; }
+  .tarjeta .abrir { font-size: 13px; font-weight: 600; color: var(--tarjeta, var(--rosa)); margin-top: 10px; }
+  .tarjeta .abrir span { display: inline-block; transition: transform .25s cubic-bezier(0.33, 1, 0.68, 1); }
+  .tarjeta:hover .abrir span { transform: translateX(4px); }
+
+  .t-aleph { --tarjeta: #D4146A; }
+  .t-soma  { --tarjeta: #4BBEEC; }
+  .t-athenea { --tarjeta: #8F1084; }
+
+  .grupo-titulo { grid-column: 1 / -1; font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gris); margin: 18px 0 2px; display: flex; align-items: center; gap: 14px; }
+  .grupo-titulo::after { content: ''; flex: 1; height: 1px; background: var(--borde); }
+
+  footer { border-top: 1px solid var(--borde); padding: 28px 0; text-align: center; font-size: 13px; color: var(--gris); }
+  footer code { font-family: ui-monospace, monospace; font-size: 12px; background: var(--fondo-suave); padding: 3px 8px; border-radius: 6px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="portada">
+  <div class="contenedor">
+    <span class="kicker">Landings CRM · Demo</span>
+    <h1>Elige tu <span class="grad">versión</span></h1>
+    <p>Tres landings de producto en HTML puro, cada una en su versión original y en su versión con animaciones (parallax fluido, divisor líquido, revelado de héroe y más).</p>
+  </div>
+</header>
+
+<main class="contenedor">
+  <div class="rejilla">
+    <h2 class="grupo-titulo">Versiones animadas</h2>
+
+    <a class="tarjeta t-aleph" href="v4-aleph-animada/">
+      <span class="etiqueta">ALEPH · Animada</span>
+      <h2>v4 — ALEPH</h2>
+      <p>CRM todo-en-uno. Mock 3D con tilt, revelado línea a línea, marquesina de clientes y riel lateral de modales.</p>
+      <span class="abrir">Abrir <span>→</span></span>
+    </a>
+
+    <a class="tarjeta t-soma" href="v5-soma-animada/">
+      <span class="etiqueta">SOMA · Animada</span>
+      <h2>v5 — SOMA</h2>
+      <p>La más completa: degradado fluido, divisor líquido hacia el CTA, parallax de orbes, banda gris de métricas y botón con relleno líquido.</p>
+      <span class="abrir">Abrir <span>→</span></span>
+    </a>
+
+    <a class="tarjeta t-athenea" href="v6-athenea-animada/">
+      <span class="etiqueta">ATHENEA · Animada</span>
+      <h2>v6 — ATHENEA</h2>
+      <p>Inteligencia estratégica. Héroe con revelado escalonado, bordes de color que crecen y modales en tonos fucsia/morado.</p>
+      <span class="abrir">Abrir <span>→</span></span>
+    </a>
+
+    <h2 class="grupo-titulo">Versiones originales</h2>
+
+    <a class="tarjeta t-aleph" href="v1-aleph/">
+      <span class="etiqueta">ALEPH · Original</span>
+      <h2>v1 — ALEPH</h2>
+      <p>La landing original: héroe con dashboard, tres pilares y métricas, sin animaciones avanzadas.</p>
+      <span class="abrir">Abrir <span>→</span></span>
+    </a>
+
+    <a class="tarjeta t-soma" href="v2-soma/">
+      <span class="etiqueta">SOMA · Original</span>
+      <h2>v2 — SOMA</h2>
+      <p>Versión base con paleta naranja/celeste/morado sobre fondo crema.</p>
+      <span class="abrir">Abrir <span>→</span></span>
+    </a>
+
+    <a class="tarjeta t-athenea" href="v3-athenea/">
+      <span class="etiqueta">ATHENEA · Original</span>
+      <h2>v3 — ATHENEA</h2>
+      <p>Versión base con paleta cacao/fucsia/morado y héroe centrado.</p>
+      <span class="abrir">Abrir <span>→</span></span>
+    </a>
+  </div>
+</main>
+
+<footer>
+  <div class="contenedor">
+    Para probar en local: <code>python -m http.server 8080</code> · Las URLs públicas quedan bajo <code>/CRM/&lt;versión&gt;/</code>
+  </div>
+</footer>
+
+</body>
+</html>
